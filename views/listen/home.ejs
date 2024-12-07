@@ -1,0 +1,10 @@
+<%- layout("/layouts/bplate.ejs") %>
+<body>
+    <% listens.forEach(listen =>{ %>
+        <a href="/listen/<%= listen._id %>/description" ><img  class="img-thumbnail" src="<%= listen.pic %>" alt=""></a>
+        <h4>Name : <%= listen.pic_name %></h4>
+        <h5>Price<%= listen.pic_price %></h5>
+    <% }) %>
+    <a href="/listen/create">create a post</a>
+</body>
+
