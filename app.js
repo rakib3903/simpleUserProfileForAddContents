@@ -8,7 +8,7 @@ const Listen = require('./modules/listen.js');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
 const User = require('./modules/user.js');
 const app = express();
 
@@ -45,22 +45,33 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(session(sessionELement));
 app.use(flash());
+
+ 
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+
+
+
 app.use((req, res, next) => {
-    res.locals.success = req.flash('seccess');
-    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
+    res.locals.currUser = req.user;
     next();
 });
 
 
 app.use('/listen', listen);
 app.use('/user', usr);
- 
-passport.use(passport.initialize());
-passport.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+
+
+
 
 app.listen(3000, ()=>{
     console.log('server is running on 3000 port');

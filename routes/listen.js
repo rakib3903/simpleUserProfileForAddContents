@@ -1,6 +1,7 @@
 const express = require('express');
 const Listen = require('../modules/listen.js');
 const router = express.Router();
+const passport = require("passport");
 
 router.get('/', async (req, res) => {
     const listens = await Listen.find();
@@ -8,6 +9,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/create', (req, res) => {
+    if(!req.isAuthenticated()){
+        return res.redirect('/user/login');
+    }
     res.render('listen/form.ejs');
 });
 
