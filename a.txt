@@ -1,0 +1,5 @@
+<% for(content of contents){ %>
+        <img  class="img-thumbnail" src="<%= content.pic %>" alt="">
+        <h4>Name : <%= content.pic_name %></h4>
+        <h5>Price<%= content.pic_price %></h5>
+    <% } %>

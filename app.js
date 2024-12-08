@@ -1,10 +1,12 @@
 const express = require('express');
 const listen = require('./routes/listen.js');
 const usr = require('./routes/user.js');
+const userprofile = require('./routes/userprofile.js');
 const path = require('path');
 const engine = require('ejs-mate');
 const mongoose = require('mongoose');
 const Listen = require('./modules/listen.js');
+const Profile = require('./modules/userprofile.js');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -68,6 +70,7 @@ app.use((req, res, next) => {
 
 app.use('/listen', listen);
 app.use('/user', usr);
+app.use('/userprofile', userprofile);
 
 
 

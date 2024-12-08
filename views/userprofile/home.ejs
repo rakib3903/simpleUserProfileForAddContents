@@ -1,0 +1,24 @@
+<%- layout('/layouts/bplate.ejs') %>
+<body>
+    <div class="row" style="margin-top: 15px; background-color: aquamarine;">
+        <div class="col">
+            <img class="size" class="img-thumbnail" src="<%= user.pro_pic %>" alt="">
+        </div>
+        <div class="col">
+            <h4>Name : <%= user.name %></h4>
+            <h5>Email : <%= user.email %></h5>
+            <h5>@<%= user.username %></h5>
+        </div>
+    </div>
+    <hr>
+
+    <% 
+    if(contents !== null){
+    for(content of contents){ %>
+        <img  class="img-thumbnail" src="<%= content.pic %>" alt="">
+        <h4>Name : <%= content.pic_name %></h4>
+        <h5>Price<%= content.pic_price %></h5>
+    <% } }%>
+
+    <a href="http://localhost:3000/userprofile/add-content"  rel="noopener noreferrer">add personal listen</a>
+</body>

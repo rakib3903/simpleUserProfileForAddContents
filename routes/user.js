@@ -25,7 +25,7 @@ router.post('/signup', async (req, res) => {
             if(err){
                 return next(err);
             }
-            req.flash('success' , "signed up successfully");
+            req.flash('success' , "logged in successfully");
             res.redirect('/listen');
         });
     }catch{
