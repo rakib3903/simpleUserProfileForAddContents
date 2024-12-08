@@ -1,10 +1,11 @@
 <%- layout("/layouts/bplate.ejs")%>
 <body>
-    <form action="/user/submit" method="post">
-        <input type="text" name="name" placeholder="name">
-        <input type="email" name="email" placeholder="email">
-        <input type="text" name="user_name" placeholder="user name">
-        <input type="password" name="password" placeholder="password">
+    <form action="/user/signup" method="post">
+        <input type="text" name="pro_pic" placeholder="priofile picture"><br>
+        <input type="text" name="name" placeholder="name"><br>
+        <input type="email" name="email" placeholder="email"><br>
+        <input type="text" name="username" placeholder="user name"><br>
+        <input type="password" name="password" placeholder="password"><br>
         <button>submit</button>
     </form>
 </body>
